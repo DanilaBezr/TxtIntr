@@ -18,7 +18,15 @@ int main(int argc, char *argv[])
 
     int opt, i = 0;
     double result = 1.0;
-    while ((opt = getopt(argc, argv, "md")) != -1)
+    
+    struct option long_options[] = {
+    {"multiply", no_argument, NULL, 'm'},
+    {"divison", no_argument, NULL, 'd'},
+    {NULL, 0, NULL, 0}
+    };
+    
+    int option_index = 0;
+    while ((opt = getopt_long(argc, argv, "md", long_options, &option_index)) != -1)
     {
         switch (opt)
         {
